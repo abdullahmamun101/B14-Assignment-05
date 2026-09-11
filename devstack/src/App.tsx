@@ -17,6 +17,7 @@ import HeroSection from "./components/hero";
 import Navbar from "./components/navbar";
 import TechnologySection from "./components/TechnologySection";
 import technologiesData from "./data/technologies.json";
+import Footer from "./components/footer";
 
 function App() {
   const [stack, setStack] = useState<Tech[]>([]);
@@ -56,6 +57,7 @@ const removeAll = () => {
         removeFromStack={removeFromStack}
         removeAll={removeAll}
       />
+      <Footer />
     </>
   );
 }
