@@ -1,3 +1,6 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 type Tech = {
   id: string;
   name: string;
@@ -18,25 +21,32 @@ import technologiesData from "./data/technologies.json";
 function App() {
   const [stack, setStack] = useState<Tech[]>([]);
 
-  const addToStack = (tech: Tech) => {
-    const alreadyAdded = stack.find((item) => item.id === tech.id);
-    if (alreadyAdded) {
-      alert("This technology is already in your stack!");
-      return;
-    }
-    setStack([...stack, tech]);
-  };
+const addToStack = (tech: Tech) => {
+  const alreadyAdded = stack.find((item) => item.id === tech.id);
+  if (alreadyAdded) {
+    toast.warning(`${tech.name} is already in your stack!`);
+    return;
+  }
+  setStack([...stack, tech]);
+  toast.success(`${tech.name} added to your stack!`);
+};
 
-  const removeFromStack = (id: string) => {
-    setStack(stack.filter((item) => item.id !== id));
-  };
+const removeFromStack = (id: string) => {
+  const removedItem = stack.find((item) => item.id === id);
+  setStack(stack.filter((item) => item.id !== id));
+  if (removedItem) {
+    toast.info(`${removedItem.name} removed from your stack.`);
+  }
+};
 
-  const removeAll = () => {
-    setStack([]);
-  };
+const removeAll = () => {
+  setStack([]);
+  toast.info("All technologies removed from your stack.");
+};
 
   return (
     <>
+      <ToastContainer aria-label="Notifications" />
       <Navbar />
       <HeroSection />
       <TechnologySection
