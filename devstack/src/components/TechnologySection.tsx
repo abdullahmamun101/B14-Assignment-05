@@ -18,7 +18,7 @@ type TechnologySectionProps = {
 };
 
 import TechnologyCard from "./TechnologyCard";
-import YourStack from "./YourStack";
+import YourStack from "./yourstack";
 
 function TechnologySection({ technologies, stack, addToStack, removeFromStack, removeAll }: TechnologySectionProps) {
   return (
