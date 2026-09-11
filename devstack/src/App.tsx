@@ -12,7 +12,7 @@ type Tech = {
   badge: string;
 };
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroSection from "./components/hero";
 import Navbar from "./components/navbar";
 import TechnologySection from "./components/TechnologySection";
@@ -21,45 +21,58 @@ import Footer from "./components/footer";
 
 function App() {
   const [stack, setStack] = useState<Tech[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [technologies, setTechnologies] = useState<Tech[]>([]);
 
-const addToStack = (tech: Tech) => {
-  const alreadyAdded = stack.find((item) => item.id === tech.id);
-  if (alreadyAdded) {
-    toast.warning(`${tech.name} is already in your stack!`);
-    return;
-  }
-  setStack([...stack, tech]);
-  toast.success(`${tech.name} added to your stack!`);
-};
+  useEffect(() => {
+    setTimeout(() => {
+      setTechnologies(technologiesData);
+      setIsLoading(false);
+    }, 500);
+  }, []);
 
-const removeFromStack = (id: string) => {
-  const removedItem = stack.find((item) => item.id === id);
-  setStack(stack.filter((item) => item.id !== id));
-  if (removedItem) {
-    toast.info(`${removedItem.name} removed from your stack.`);
-  }
-};
+  const addToStack = (tech: Tech) => {
+    const alreadyAdded = stack.find((item) => item.id === tech.id);
+    if (alreadyAdded) {
+      toast.warning(`${tech.name} is already in your stack!`);
+      return;
+    }
+    setStack([...stack, tech]);
+    toast.success(`${tech.name} added to your stack!`);
+  };
 
-const removeAll = () => {
-  setStack([]);
-  toast.info("All technologies removed from your stack.");
-};
+  const removeFromStack = (id: string) => {
+    const removedItem = stack.find((item) => item.id === id);
+    setStack(stack.filter((item) => item.id !== id));
+    if (removedItem) {
+      toast.info(`${removedItem.name} removed from your stack.`);
+    }
+  };
 
-  return (
-    <>
-      <ToastContainer aria-label="Notifications" />
-      <Navbar />
-      <HeroSection />
+  const removeAll = () => {
+    setStack([]);
+    toast.info("All technologies removed from your stack.");
+  };
+
+ return (
+  <>
+    <ToastContainer aria-label="Notifications" />
+    <Navbar />
+    <HeroSection />
+    {isLoading ? (
+      <p className="text-center py-20 text-slate-400">Loading technologies...</p>
+    ) : (
       <TechnologySection
-        technologies={technologiesData}
+        technologies={technologies}
         stack={stack}
         addToStack={addToStack}
         removeFromStack={removeFromStack}
         removeAll={removeAll}
       />
-      <Footer />
-    </>
-  );
+    )}
+    <Footer />
+  </>
+);
 }
 
 export default App;
