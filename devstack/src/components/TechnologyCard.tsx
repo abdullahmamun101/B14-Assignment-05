@@ -38,10 +38,10 @@ function TechnologyCard({ tech, isAdded, onAdd }: TechnologyCardProps) {
         onClick={onAdd}
         disabled={isAdded}
         className={`w-full py-2 rounded-lg font-medium text-white ${
-          isAdded ? "bg-slate-400 cursor-not-allowed" : "bg-slate-900 hover:bg-slate-800"
+          isAdded ? "bg-[#e30073] cursor-not-allowed" : "bg-slate-900 hover:bg-slate-800"
         }`}
       >
-        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
+        {isAdded ? "Added to Stack" : "Add to Stack"}
       </button>
     </div>
   );

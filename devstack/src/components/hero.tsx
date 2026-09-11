@@ -22,11 +22,11 @@ const HeroSection = () => {
 
           {/*Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button className="px-6 py-3 rounded-lg font-medium text-white bg-linear-to-r from-orange-500 via-pink-500 to-pink-600 hover:opacity-95 shadow-sm transition-all duration-200">
+            <button className="px-6 py-3 rounded-lg font-medium text-white bg-linear-to-r from-orange-500 via-pink-500 to-pink-600 hover:opacity-95 shadow-sm transition-all duration-200 hover:cursor-pointer">
               Explore Technologies
             </button>
 
-            <button className="px-6 py-3 rounded-lg font-medium text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all duration-200">
+            <button className="px-6 py-3 rounded-lg font-medium text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all duration-200 hover:cursor-pointer">
               Learn More
             </button>
           </div>
