@@ -17,7 +17,7 @@ type TechnologyCardProps = {
 
 function TechnologyCard({ tech, isAdded, onAdd }: TechnologyCardProps) {
   return (
-    <div className="border rounded-xl p-5 bg-white shadow-sm">
+    <div className="rounded-xl p-5 bg-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
       <div className="flex justify-between items-start mb-3">
         <img src={tech.icon} alt={tech.name} className="w-8 h-8" />
         <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-600">

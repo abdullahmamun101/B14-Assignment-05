@@ -18,15 +18,17 @@ type YourStackProps = {
 
 function YourStack({ stack, onRemove, onRemoveAll }: YourStackProps) {
   return (
-    <div className="border rounded-xl p-5 bg-white shadow-sm h-fit">
+    <div className="rounded-xl p-5 bg-white shadow-md h-fit">
       <h3 className="font-bold text-lg mb-1">Your Stack</h3>
       <p className="text-sm text-slate-500 mb-4">
-        {stack.length} Technology Selected
-      </p>
+  {stack.length === 0 ? "No Technology selected yet" : `${stack.length} Technology Selected`}
+</p>
 
       {stack.length === 0 ? (
-        <p className="text-sm text-slate-400">Your Stack is empty.</p>
-      ) : (
+  <div className="border border-dashed border-slate-300 rounded-lg py-8 text-center">
+    <p className="text-sm text-slate-400">Your stack is empty.</p>
+  </div>
+) : (
         <div className="flex flex-col gap-3 mb-4">
           {stack.map((item) => (
             <div key={item.id} className="flex items-center justify-between border rounded-lg px-3 py-2">
